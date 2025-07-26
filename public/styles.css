@@ -263,7 +263,7 @@ header * {
   }
 }
 body {
-  font-family: "questrial";
+  font-family: "questrial", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
   color: white;
@@ -953,6 +953,135 @@ footer {
 }
 .submission-confirmation h1 {
   font-size: 5rem;
+}
+
+/* Website Needs Assessment */
+/* ======================= */
+
+#assessment-body {
+  color: white;
+  font-family: "questrial", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align to top for better scrolling on smaller screens */
+  /* min-height: 100vh; */
+  padding: 2rem 1rem; /* Add padding for overall layout */
+}
+.assessment-container {
+  background-color: transparent;
+  border: 1px solid gray;
+  border-radius: 1rem; /* Rounded corners */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+  max-width: 800px; /* Max width for readability */
+  width: 100%;
+  padding: 2.5rem; /* Ample padding inside */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.assessment-container h1 {
+  color: white !important;
+}
+.assessment-container #introduction-text {
+  color: white !important;
+}
+.assessment-container #question-text {
+  color: white !important;
+}
+/* Custom styles for option buttons to mimic previous design */
+.option-button {
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  border: 2px solid #e2e8f0; /* Light border */
+  height: auto;
+}
+.option-button:hover {
+  background-color: transparent; /* Light blue on hover */
+  border-color: var(--brand-color-dark); /* Blue border on hover */
+}
+.option-button.selected {
+  background-color: var(--brand-color-dark); /* Medium blue when selected */
+  border-color: transparent; /* Darker blue border when selected */
+  font-weight: 600;
+  color: white; /* Darker text for selected */
+}
+
+/*  Progress Bar */
+
+#progressBar {
+  background-color: var(--brand-color-light) !important;
+}
+#next-button {
+  background-color: transparent;
+  border: 2px solid var(--brand-color-light);
+  font-size: 1.2rem;
+}
+#next-button:hover {
+  background-color: var(--brand-color-dark);
+  transform: scale(1.1);
+  transition: var(--animation-timing);
+  border: transparent;
+}
+
+#submit-button {
+  width: auto;
+}
+/* Custom styles for message boxes to mimic previous design */
+.message-box {
+  background-color: #ecfdf5; /* Light green background */
+  border: 1px solid var(--brand-color-light); /* Green border */
+  color: black; /* Dark green text */
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 500;
+}
+.message-box.alert-danger {
+  background-color: #fcebeb; /* Light red background */
+  border-color: #f5c6cb; /* Red border */
+  color: #721c24; /* Dark red text */
+}
+
+/* Spinner animation */
+.loading-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #3b82f6;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+#email-submit-button {
+  background-color: white !important;
+  color: black;
+  font-size: 2rem;
+  height: auto;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 767.98px) {
+  .assessment-container {
+    padding: 1.5rem;
+  }
+  .h1 {
+    font-size: 2rem !important; /* Adjust heading size */
+  }
+  .option-button {
+    padding: 0.75rem 1rem; /* Adjust button padding */
+  }
 }
 
 /* This section describes how the home page will look on tablets and on mobile devices. */

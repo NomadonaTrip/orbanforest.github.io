@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Brantford Business Website Assessment</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <!-- Google fonts EXO and Questrial -->
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Questrial&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom css -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <special-header></special-header>
+    <section id="assessment-body">
+      <div class="container assessment-container">
+        <h1 class="h3 fw-bold text-center text-dark mb-4">
+          Your Business Website Assessment
+        </h1>
+        <p class="text-center text-secondary mb-4" id="introduction-text"></p>
+
+        <div class="progress mb-4" style="height: 0.75rem">
+          <div
+            id="progressBar"
+            class="progress-bar bg-primary"
+            role="progressbar"
+            style="width: 0%"
+            aria-valuenow="0"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          ></div>
+        </div>
+
+        <div id="question-area" class="d-none">
+          <p class="h5 fw-semibold text-dark mb-4" id="question-text"></p>
+          <div id="options-container" class="d-flex flex-column gap-3">
+            <!-- Options will be dynamically loaded here -->
+          </div>
+          <div class="d-flex justify-content-between mt-4">
+            <button
+              id="prev-button"
+              class="btn btn-secondary px-4 py-2 rounded-lg"
+              disabled
+            >
+              Previous
+            </button>
+            <button
+              id="next-button"
+              class="btn btn-primary px-4 py-2 rounded-lg"
+            >
+              Next
+            </button>
+            <button
+              id="submit-button"
+              class="btn btn-success px-4 py-2 rounded-lg d-none"
+            >
+              Get Recommendation
+            </button>
+          </div>
+        </div>
+
+        <div
+          id="email-capture-area"
+          class="d-none mt-4 p-4 bg-info bg-opacity-10 rounded shadow-sm"
+        >
+          <h2 class="h5 fw-bold text-primary mb-3 text-center">
+            Get Your Personalized Recommendation!
+          </h2>
+          <p class="text-dark mb-3 text-center">
+            Enter your email to receive your full assessment results and
+            tailored insights for your Brantford business. This email will also
+            serve as a unique identifier for your assessment data.
+          </p>
+          <input
+            type="email"
+            id="user-email"
+            placeholder="Your Email Address"
+            class="form-control mb-3"
+          />
+          <button
+            id="email-submit-button"
+            class="btn btn-primary w-100 px-4 py-2 rounded-lg"
+          >
+            <span id="email-submit-text">Submit & Get Results</span>
+            <span
+              id="email-submit-spinner"
+              class="loading-spinner d-none"
+            ></span>
+          </button>
+          <div id="email-message-box" class="message-box d-none"></div>
+        </div>
+
+        <div id="recommendation-area" class="d-none mt-4">
+          <h2 class="h4 fw-bold text-center text-dark mb-4">
+            Your Personalized Recommendation
+          </h2>
+          <div
+            id="recommendation-card"
+            class="card shadow-sm border-light rounded"
+          >
+            <div class="card-body p-4">
+              <h3
+                id="recommendation-title"
+                class="h5 text-primary fw-bold mb-3"
+              ></h3>
+              <p id="recommendation-description" class="text-secondary"></p>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center mt-4">
+            <button
+              id="copy-results-button"
+              class="btn btn-info px-4 py-2 rounded-lg"
+            >
+              Copy Results
+            </button>
+          </div>
+          <div id="copy-message-box" class="message-box d-none"></div>
+        </div>
+      </div>
+    </section>
+    <hr />
+    <special-footer></special-footer>
+
+    <!-- Bootstrap JS Bundle (includes Popper) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // Assessment data embedded directly from the provided JSON
+      const assessmentData = {
+        introduction:
+          "This assessment will guide you through key considerations for your website and online marketing needs. Your answers will help us provide a personalized recommendation and give us valuable insights into the local market.",
+        questions: [
+          {
+            id: "q1",
+            text: "What best describes your current website situation?",
+            options: [
+              {
+                id: "q1o1",
+                text: "I don't have a website yet, and I'm ready to build one.",
+                scores: {
+                  engage_web_developer: 3,
+                  commission_static_website: 2,
+                },
+              },
+              {
+                id: "q1o2",
+                text: "I have a simple, informational website that rarely needs updates.",
+                scores: { commission_static_website: 3 },
+              },
+              {
+                id: "q1o3",
+                text: "I have a complex, dynamic website (e.g., e-commerce, active blog) that I actively manage.",
+                scores: { continue_current_solution: 3 },
+              },
+              {
+                id: "q1o4",
+                text: "I have a complex, dynamic website, but it's not well-managed or updated consistently.",
+                scores: {
+                  commission_content_manager: 3,
+                  engage_web_developer: 1,
+                },
+              },
+            ],
+          },
+          {
+            id: "q2",
+            text: "How often do you anticipate needing to update your website's main content (e.g., adding new services, changing prices, writing blog posts)?",
+            options: [
+              {
+                id: "q2o1",
+                text: "Daily or multiple times a week.",
+                scores: {
+                  continue_current_solution: 2,
+                  commission_content_manager: 1,
+                },
+              },
+              {
+                id: "q2o2",
+                text: "Monthly or quarterly.",
+                scores: {
+                  commission_content_manager: 2,
+                  engage_web_developer: 1,
+                },
+              },
+              {
+                id: "q2o3",
+                text: "Rarely (e.g., yearly or less).",
+                scores: { commission_static_website: 3 },
+              },
+            ],
+          },
+          {
+            id: "q3",
+            text: "What is the primary business goal of your website?",
+            options: [
+              {
+                id: "q3o1",
+                text: "To serve as a digital brochure or portfolio showcasing my services/products.",
+                scores: { commission_static_website: 3 },
+              },
+              {
+                id: "q3o2",
+                text: "To generate leads through contact forms, inquiries, or sign-ups.",
+                scores: { commission_static_website: 2 },
+              },
+              {
+                id: "q3o3",
+                text: "To facilitate e-commerce sales, online booking, or membership management.",
+                scores: {
+                  engage_web_developer: 2,
+                  continue_current_solution: 1,
+                },
+              },
+              {
+                id: "q3o4",
+                text: "To host an active blog, news hub, or community forum with dynamic content.",
+                scores: {
+                  continue_current_solution: 2,
+                  commission_content_manager: 1,
+                },
+              },
+              {
+                id: "q3o5",
+                text: "To offer complex user interactions, custom database integrations, or personalized content.",
+                scores: { engage_web_developer: 3 },
+              },
+            ],
+          },
+          {
+            id: "q4",
+            text: "Who primarily handles your website's content management, and what are your biggest challenges?",
+            options: [
+              {
+                id: "q4o1",
+                text: "Me or my team; we're comfortable and manage updates frequently.",
+                scores: { continue_current_solution: 3 },
+              },
+              {
+                id: "q4o2",
+                text: "Me or my team; but we struggle with consistency, finding the time, or knowing what to post.",
+                scores: { commission_content_manager: 3 },
+              },
+              {
+                id: "q4o3",
+                text: "My web developer; they handle all changes as needed.",
+                scores: {
+                  engage_web_developer: 2,
+                  commission_static_website: 1,
+                },
+              },
+              {
+                id: "q4o4",
+                text: "No one; the content rarely changes, so it's not a focus.",
+                scores: { commission_static_website: 3 },
+              },
+            ],
+          },
+          {
+            id: "q5",
+            text: "How do you feel about your current website's recurring costs (e.g., hosting, platform fees) versus the value you receive?",
+            options: [
+              {
+                id: "q5o1",
+                text: "Very satisfied; we fully utilize our current platform and its features, making the costs worthwhile.",
+                scores: { continue_current_solution: 3 },
+              },
+              {
+                id: "q5o2",
+                text: "Somewhat satisfied; we use some features, but feel we might be overpaying for unused capabilities.",
+                scores: {
+                  commission_static_website: 2,
+                  commission_content_manager: 1,
+                },
+              },
+              {
+                id: "q5o3",
+                text: "Not satisfied; we rarely log in or make updates, and it feels like 'rent' for an underutilized asset.",
+                scores: { commission_static_website: 3 },
+              },
+              {
+                id: "q5o4",
+                text: "I don't have a website or am unsure of current costs, and I'm looking for the most efficient long-term solution.",
+                scores: {
+                  engage_web_developer: 2,
+                  commission_static_website: 1,
+                },
+              },
+            ],
+          },
+        ],
+        recommendation_logic_summary:
+          "After you answer all the questions, your responses will be analyzed to identify patterns in your needs and preferences. Based on the cumulative insights from your answers, we'll provide a recommendation that best aligns with your business's online objectives and operational style. For example, if your answers frequently indicate simple informational needs and infrequent updates, a static website might be recommended. If you highlight complex functionalities or a need for custom solutions, engaging a web developer will likely be suggested. If you're using a dynamic platform but struggling with content, a content manager could be your ideal solution. If your current setup perfectly matches your active needs, continuing with your current solution might be the best path.",
+        recommendations: {
+          engage_web_developer: {
+            title: "Engage a Web Developer",
+            description:
+              "Your assessment suggests your business needs a tailored online solution, custom functionalities, or a strategic partner to guide your digital growth. A web developer can build bespoke features, integrate complex systems, or provide expert guidance on the most suitable technology for your unique requirements, especially if you're starting fresh or need significant upgrades.",
+          },
+          continue_current_solution: {
+            title: "Continue Using Your Current Web Solution",
+            description:
+              "Based on your responses, your current website setup appears to be effectively serving your business's dynamic needs. You're actively utilizing its features and are satisfied with the value it provides, indicating that your existing solution is a good fit for your ongoing online marketing and website development requirements.",
+          },
+          commission_static_website: {
+            title: "Commission a Static Website",
+            description:
+              "Your assessment points to a need for an efficient, secure, and cost-effective online presence primarily for displaying information or generating leads with infrequent content updates. A static website is ideal for businesses that don't need complex, dynamic features, offering superior performance, enhanced security, and significantly lower recurring costs compared to traditional CMS platforms.",
+          },
+          commission_content_manager: {
+            title: "Commission a Content Manager",
+            description:
+              "Your responses indicate you have a website (likely a CMS) with features that could be valuable, but you're struggling with the consistency, time, or expertise needed to keep its content fresh and engaging. A content manager can help you maximize your existing platform's potential by planning, creating, and updating content regularly, ensuring your online presence remains dynamic and relevant without requiring major website overhauls.",
+          },
+        },
+      };
+
+      // --- Google Form Configuration  ---
+      const googleFormConfig = {
+        // Replace with the actual Google Form submission URL
+        submissionUrl:
+          "https://docs.google.com/forms/u/0/d/e/1FAIpQLSeHXVWQ3LxhvdLBYw60KKVfGlJvnSNN5fk99Ro9xowqh5NdEg/formResponse",
+        // Replace with the actual entry IDs from your Google Form
+        // (Get these by creating a pre-filled link in your Google Form)
+        fieldMap: {
+          q1: "entry.458428792", // entry ID for Q1
+          q2: "entry.1001125750", // entry ID for Q2
+          q3: "entry.1809333721", // entry ID for Q3
+          q4: "entry.1968486468", // entry ID for Q4
+          q5: "entry.1922788513", // entry ID for Q5
+          email: "entry.661252825", // entry ID for Email
+        },
+      };
+      // --- END Google Form Configuration ---
+
+      // DOM Elements
+      const introductionText = document.getElementById("introduction-text");
+      const questionArea = document.getElementById("question-area");
+      const questionText = document.getElementById("question-text");
+      const optionsContainer = document.getElementById("options-container");
+      const prevButton = document.getElementById("prev-button");
+      const nextButton = document.getElementById("next-button");
+      const submitButton = document.getElementById("submit-button");
+      const emailCaptureArea = document.getElementById("email-capture-area");
+      const userEmailInput = document.getElementById("user-email");
+      const emailSubmitButton = document.getElementById("email-submit-button");
+      const emailSubmitText = document.getElementById("email-submit-text");
+      const emailSubmitSpinner = document.getElementById(
+        "email-submit-spinner"
+      );
+      const emailMessageBox = document.getElementById("email-message-box");
+      const recommendationArea = document.getElementById("recommendation-area");
+      const recommendationTitle = document.getElementById(
+        "recommendation-title"
+      );
+      const recommendationDescription = document.getElementById(
+        "recommendation-description"
+      );
+      const progressBar = document.getElementById("progressBar");
+      const copyResultsButton = document.getElementById("copy-results-button");
+      const copyMessageBox = document.getElementById("copy-message-box");
+
+      // Assessment State
+      let currentQuestionIndex = 0;
+      // Stores selected option ID for each question
+      let userAnswers = {};
+      // Stores cumulative scores for each recommendation type
+      let recommendationScores = {
+        engage_web_developer: 0,
+        continue_current_solution: 0,
+        commission_static_website: 0,
+        commission_content_manager: 0,
+      };
+
+      // --- Functions ---
+
+      /**
+       * Displays a temporary message in a designated message box.
+       * @param {HTMLElement} boxElement - The message box element.
+       * @param {string} message - The message to display.
+       * @param {string} type - 'success' or 'error' to apply specific styling.
+       */
+      function showMessageBox(boxElement, message, type = "success") {
+        boxElement.textContent = message;
+        boxElement.classList.remove("d-none", "alert-danger", "alert-success"); // Remove Bootstrap alert classes
+        if (type === "error") {
+          boxElement.classList.add("alert-danger"); // Add Bootstrap danger class
+        } else {
+          boxElement.classList.add("alert-success"); // Add Bootstrap success class
+        }
+        boxElement.classList.remove("d-none"); // Ensure it's visible
+        setTimeout(() => {
+          boxElement.classList.add("d-none"); // Hide after 3 seconds
+        }, 3000);
+      }
+
+      /**
+       * Renders the current question and its options.
+       */
+      function renderQuestion() {
+        // Hide recommendation and email areas
+        recommendationArea.classList.add("d-none");
+        emailCaptureArea.classList.add("d-none");
+        questionArea.classList.remove("d-none");
+
+        const question = assessmentData.questions[currentQuestionIndex];
+        questionText.textContent = question.text;
+        optionsContainer.innerHTML = ""; // Clear previous options
+
+        question.options.forEach((option) => {
+          const button = document.createElement("button");
+          button.textContent = option.text;
+          // Using Bootstrap's btn and btn-outline-secondary for default look
+          button.className =
+            "option-button btn btn-outline-secondary w-100 text-start pb-3 px-4 rounded shadow-sm";
+          button.dataset.optionId = option.id;
+
+          // Mark as selected if previously answered
+          if (userAnswers[question.id] === option.id) {
+            button.classList.add("selected");
+          }
+
+          button.addEventListener("click", () =>
+            selectOption(question.id, option.id, option.scores)
+          );
+          optionsContainer.appendChild(button);
+        });
+
+        updateNavigationButtons();
+        updateProgressBar();
+      }
+
+      /**
+       * Updates the progress bar based on the current question index.
+       */
+      function updateProgressBar() {
+        const progress =
+          ((currentQuestionIndex + 1) / assessmentData.questions.length) * 100;
+        progressBar.style.width = `${progress}%`;
+        progressBar.setAttribute("aria-valuenow", progress); // Update ARIA value
+      }
+
+      /**
+       * Handles option selection, updates user answers, and potentially enables next button.
+       * @param {string} questionId - ID of the question.
+       * @param {string} optionId - ID of the selected option.
+       * @param {object} scores - Scores associated with the selected option.
+       */
+      function selectOption(questionId, optionId, scores) {
+        userAnswers[questionId] = optionId;
+
+        // Remove 'selected' class from all options for the current question
+        optionsContainer.querySelectorAll(".option-button").forEach((btn) => {
+          btn.classList.remove("selected");
+        });
+        // Add 'selected' class to the clicked option
+        event.target.classList.add("selected");
+
+        // Enable next button if an option is selected
+        if (currentQuestionIndex < assessmentData.questions.length - 1) {
+          nextButton.disabled = false;
+        } else {
+          submitButton.disabled = false;
+        }
+      }
+
+      /**
+       * Updates the visibility and enabled state of navigation buttons.
+       */
+      function updateNavigationButtons() {
+        prevButton.disabled = currentQuestionIndex === 0;
+        nextButton.classList.toggle(
+          "d-none",
+          currentQuestionIndex === assessmentData.questions.length - 1
+        );
+        submitButton.classList.toggle(
+          "d-none",
+          currentQuestionIndex < assessmentData.questions.length - 1
+        );
+
+        // Disable next/submit if current question hasn't been answered yet
+        const currentQuestionId =
+          assessmentData.questions[currentQuestionIndex].id;
+        const hasAnsweredCurrentQuestion =
+          userAnswers.hasOwnProperty(currentQuestionId);
+        nextButton.disabled = !hasAnsweredCurrentQuestion;
+        submitButton.disabled = !hasAnsweredCurrentQuestion;
+      }
+
+      /**
+       * Calculates the final recommendation based on accumulated scores.
+       * @returns {object} The recommended service (title and description).
+       */
+      function calculateRecommendation() {
+        // Reset scores before recalculating
+        recommendationScores = {
+          engage_web_developer: 0,
+          continue_current_solution: 0,
+          commission_static_website: 0,
+          commission_content_manager: 0,
+        };
+
+        // Accumulate scores from all answered questions
+        assessmentData.questions.forEach((question) => {
+          const selectedOptionId = userAnswers[question.id];
+          if (selectedOptionId) {
+            const selectedOption = question.options.find(
+              (opt) => opt.id === selectedOptionId
+            );
+            if (selectedOption && selectedOption.scores) {
+              for (const recType in selectedOption.scores) {
+                if (recommendationScores.hasOwnProperty(recType)) {
+                  recommendationScores[recType] +=
+                    selectedOption.scores[recType];
+                }
+              }
+            }
+          }
+        });
+
+        // Determine the recommendation with the highest score
+        let bestRecommendationKey = null;
+        let maxScore = -1;
+
+        for (const recType in recommendationScores) {
+          if (recommendationScores[recType] > maxScore) {
+            maxScore = recommendationScores[recType];
+            bestRecommendationKey = recType;
+          }
+        }
+
+        // Fallback if no specific recommendation is clearly highest (e.g., all zeros or ties)
+        if (bestRecommendationKey === null) {
+          // Default to 'engage_web_developer' or a general advice if no clear winner
+          return assessmentData.recommendations.engage_web_developer;
+        }
+
+        return assessmentData.recommendations[bestRecommendationKey];
+      }
+
+      /**
+       * Displays the final recommendation to the user.
+       */
+      function displayRecommendation() {
+        questionArea.classList.add("d-none");
+        emailCaptureArea.classList.add("d-none"); // Ensure email area is hidden
+        recommendationArea.classList.remove("d-none");
+
+        const finalRecommendation = calculateRecommendation();
+        recommendationTitle.textContent = finalRecommendation.title;
+        recommendationDescription.textContent = finalRecommendation.description;
+      }
+
+      /**
+       * Sends assessment data to Google Form.
+       * @param {string} email - User's email address.
+       * @param {object} answers - User's selected answers.
+       */
+      async function sendToGoogleForm(email, answers) {
+        const formData = new FormData();
+        formData.append(googleFormConfig.fieldMap.email, email);
+
+        // Map answers to Google Form entry IDs
+        assessmentData.questions.forEach((question) => {
+          const selectedOptionId = answers[question.id];
+          if (selectedOptionId) {
+            const selectedOption = question.options.find(
+              (opt) => opt.id === selectedOptionId
+            );
+            if (selectedOption && googleFormConfig.fieldMap[question.id]) {
+              formData.append(
+                googleFormConfig.fieldMap[question.id],
+                selectedOption.text
+              );
+            }
+          }
+        });
+
+        // For market research, you might also want to send the calculated recommendation
+        const finalRecommendation = calculateRecommendation();
+        // You'd need a separate field in your Google Form for this, e.g., 'entry.RECOMMENDATION_ID'
+        // formData.append('entry.YOUR_RECOMMENDATION_FIELD_ID', finalRecommendation.title);
+
+        try {
+          // Using 'no-cors' mode because Google Forms typically do not allow direct AJAX from different origins
+          // with CORS headers, and we don't control their server. This means we won't get a success response,
+          // but the form submission should still occur.
+          await fetch(googleFormConfig.submissionUrl, {
+            method: "POST",
+            mode: "no-cors", // Important for cross-origin Google Form submissions
+            body: formData,
+          });
+          console.log(
+            "Data sent to Google Form (no-cors mode, no response expected)."
+          );
+          return true; // Assume success for user feedback
+        } catch (error) {
+          console.error("Error sending data to Google Form:", error);
+          // Even with errors, in no-cors mode, the request might have gone through.
+          // We'll still assume success for the user's experience.
+          return true;
+        }
+      }
+
+      // --- Event Listeners ---
+
+      prevButton.addEventListener("click", () => {
+        if (currentQuestionIndex > 0) {
+          currentQuestionIndex--;
+          renderQuestion();
+        }
+      });
+
+      nextButton.addEventListener("click", () => {
+        const currentQuestionId =
+          assessmentData.questions[currentQuestionIndex].id;
+        if (userAnswers.hasOwnProperty(currentQuestionId)) {
+          // Ensure current question is answered
+          if (currentQuestionIndex < assessmentData.questions.length - 1) {
+            currentQuestionIndex++;
+            renderQuestion();
+          }
+        } else {
+          showMessageBox(
+            emailMessageBox,
+            "Please select an option before proceeding.",
+            "error"
+          );
+        }
+      });
+
+      submitButton.addEventListener("click", () => {
+        const currentQuestionId =
+          assessmentData.questions[currentQuestionIndex].id;
+        if (userAnswers.hasOwnProperty(currentQuestionId)) {
+          // Ensure last question is answered
+          questionArea.classList.add("d-none");
+          emailCaptureArea.classList.remove("d-none"); // Show email capture
+        } else {
+          showMessageBox(
+            emailMessageBox,
+            "Please select an option before getting your recommendation.",
+            "error"
+          );
+        }
+      });
+
+      emailSubmitButton.addEventListener("click", async () => {
+        const userEmail = userEmailInput.value.trim();
+        if (
+          !userEmail ||
+          !userEmail.includes("@") ||
+          !userEmail.includes(".")
+        ) {
+          showMessageBox(
+            emailMessageBox,
+            "Please enter a valid email address.",
+            "error"
+          );
+          return;
+        }
+
+        // Show loading spinner
+        emailSubmitText.classList.add("d-none");
+        emailSubmitSpinner.classList.remove("d-none");
+        emailSubmitButton.disabled = true;
+
+        const success = await sendToGoogleForm(userEmail, userAnswers);
+
+        // Hide loading spinner
+        emailSubmitText.classList.remove("d-none");
+        emailSubmitSpinner.classList.add("d-none");
+        emailSubmitButton.disabled = false;
+
+        if (success) {
+          showMessageBox(
+            emailMessageBox,
+            "Thank you! Your recommendation is ready.",
+            "success"
+          );
+          setTimeout(displayRecommendation, 1000); // Wait a bit before showing recommendation
+        } else {
+          showMessageBox(
+            emailMessageBox,
+            "There was an issue submitting your data. Please try again.",
+            "error"
+          );
+        }
+      });
+
+      copyResultsButton.addEventListener("click", () => {
+        const finalRecommendation = calculateRecommendation();
+        const resultsText = `
+Your Brantford Business Website Assessment Results:
+
+Your Email: ${userEmailInput.value || "Not provided"}
+
+---
+Your Personalized Recommendation:
+Title: ${finalRecommendation.title}
+Description: ${finalRecommendation.description}
+---
+
+Your Answers:
+${assessmentData.questions
+  .map((q) => {
+    const selectedOptionId = userAnswers[q.id];
+    const selectedOption = q.options.find((opt) => opt.id === selectedOptionId);
+    return `- ${q.text}\n  Selected: ${
+      selectedOption ? selectedOption.text : "N/A"
+    }`;
+  })
+  .join("\n")}
+
+---
+Internal Score Breakdown (for market research):
+${Object.entries(recommendationScores)
+  .map(
+    ([key, value]) =>
+      `- ${key
+        .replace(/_/g, " ")
+        .replace(/\b\w/g, (l) => l.toUpperCase())}: ${value}`
+  )
+  .join("\n")}
+            `;
+
+        // Use document.execCommand('copy') for broader compatibility in iframes
+        const tempTextArea = document.createElement("textarea");
+        tempTextArea.value = resultsText;
+        document.body.appendChild(tempTextArea);
+        tempTextArea.select();
+        try {
+          document.execCommand("copy");
+          showMessageBox(
+            copyMessageBox,
+            "Results copied to clipboard!",
+            "success"
+          );
+        } catch (err) {
+          showMessageBox(
+            copyMessageBox,
+            "Failed to copy results. Please copy manually.",
+            "error"
+          );
+          console.error("Failed to copy text: ", err);
+        } finally {
+          document.body.removeChild(tempTextArea);
+        }
+      });
+
+      // --- Initialization ---
+      document.addEventListener("DOMContentLoaded", () => {
+        introductionText.textContent = assessmentData.introduction;
+        renderQuestion(); // Start with the first question
+      });
+    </script>
+    <script src="script.js"></script>
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
