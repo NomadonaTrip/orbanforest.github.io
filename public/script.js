@@ -14,7 +14,6 @@ class SpecialHeader extends HTMLElement {
                 <ul class="navigation">
                     <a href="index.html"><li>Home</li></a>
                     <a href="about-us.html"><li>About Us</li></a>
-                    <a href="assessment.html"><li>Needs Check</li></a>
                     <a href="contact-us.html"><li>Contact Us</li></a>
                     <a id="call-button" href="https://wa.me/+13659948961"><li><button>Call Us</button></li></a>
                 </ul>
@@ -25,7 +24,6 @@ class SpecialHeader extends HTMLElement {
                     <nav>
                         <div><a href="index.html">Home</a></div>
                         <div><a href="about-us.html">About Us</a></div>
-                        <div><a href="assessment.html">Needs Check </a></div>
                         <div><a href="contact-us.html">Contact Us</a></div>
                         
                     </nav>
