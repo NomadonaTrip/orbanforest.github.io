@@ -1028,7 +1028,19 @@ footer {
 }
 
 #submit-button {
-  width: auto;
+  width: auto !important;
+}
+
+#submit-button:hover {
+  background-color: white;
+  color: black;
+  transform: scale(1.1);
+  transition: var(--animation-timing);
+}
+
+#copy-results-button {
+  width: auto !important;
+  height: auto;
 }
 /* Custom styles for message boxes to mimic previous design */
 .message-box {
