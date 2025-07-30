@@ -414,6 +414,9 @@ hr {
   margin-top: -5%;
   color: gray;
 }
+#conversation span {
+  color: #a82eff;
+}
 #conversation button {
   margin-top: -2%;
   width: 15rem;
