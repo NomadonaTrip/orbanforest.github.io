@@ -958,6 +958,20 @@ footer {
   font-size: 5rem;
 }
 
+.submission-confirmation a {
+  text-decoration: none;
+  color: white;
+}
+.submission-confirmation button {
+  width: auto;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+}
+.submission-confirmation button:hover {
+  transform: scale(1.1);
+  transition: var(--animation-timing);
+}
 /* Website Needs Assessment */
 /* ======================= */
 
