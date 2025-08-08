@@ -637,6 +637,8 @@ button .youtube:hover {
 }
 
 /* The About Us page begins here */
+/* ============================ */
+
 .about-us {
   width: 100%;
   display: flex;
@@ -776,6 +778,7 @@ button .youtube:hover {
 }
 
 /* This section describes the Contact Us page */
+/* ========================================= */
 
 .contact-page {
   width: 100%;
@@ -790,7 +793,7 @@ button .youtube:hover {
 .contact-message {
   width: 20%;
   padding: 1rem;
-  height: 70dvh;
+  height: 50dvh;
   border: 1px solid gray;
   border-radius: 20px;
   margin-top: 4rem;
@@ -804,28 +807,33 @@ button .youtube:hover {
   padding-left: 0;
 }
 .contact-form {
-  width: 43%;
+  width: 40vw;
   margin-top: 6rem;
+  display: flex;
 }
 #client-name {
+  width: 100%;
+}
+#Name {
   margin-bottom: 5px;
+  width: 100%;
 }
 .personal-information {
   display: flex;
   flex-direction: column;
   align-items: center;
   border: 1px solid gray;
-  width: 95%;
   border-radius: 10px;
   padding: 20px;
 }
-.personal-information input[type="text"] {
-  width: 21rem;
-  margin-right: 10px;
+#Name input[type="text"] {
+  width: 100%;
 }
-.personal-information input[type="email"] {
-  width: 21rem;
-  margin-right: 10px;
+#email-address input[type="email"] {
+  width: 100%;
+}
+#phone-number input[type="text"] {
+  width: 100%;
 }
 
 input[type="text"],
@@ -837,19 +845,23 @@ input[type="email"] {
   background-color: transparent;
   padding: 3px;
 }
-#client-name {
-  display: flex;
-}
 
 #client-contact {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  width: 100%;
+  gap: 1rem;
 }
-#company-url input[type="text"] {
+#client-contact > * {
+  width: 100%;
+}
+/* #company-url input[type="text"] {
   width: 43rem;
-}
+} */
 .project-info {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 15px;
   padding-top: 15px;
   width: 100%;
@@ -948,14 +960,28 @@ footer {
   display: flex;
   justify-content: center;
 }
-.submission-confirmation {
+
+/* =========Submissions Page========== */
+/* ================================== */
+
+#submission-confirmation {
+  display: flex;
+  justify-content: center;
+}
+#submission-confirmation .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.submission-confirmation h1 {
-  font-size: 5rem;
+#submission-confirmation h1 {
+  font-size: 4rem;
+  margin-top: 6rem;
+}
+#submission-confirmation p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
 .submission-confirmation a {
@@ -1355,6 +1381,16 @@ footer {
   .description p {
     max-width: 100%;
   }
+
+  /* submissions page  */
+
+  #submission-confirmation .container {
+    width: 90%;
+  }
+  #submission-confirmation h1 {
+  }
+  #submission-confirmation p {
+  }
   /* Hide the reasons subsection of the hero page when screen height < 750px */
   @media (max-height: 750px) {
     #hero-text {
@@ -1485,6 +1521,17 @@ footer {
     #hero-reasons {
       display: none;
     }
+  }
+  /* submissions page */
+  /* =============== */
+
+  .submission-confirmation .container {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+  }
+  #submission-confirmation h1 {
+    font-size: 2rem;
   }
 }
 /* Small Tablets: 481px - 768px */

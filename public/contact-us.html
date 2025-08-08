@@ -35,6 +35,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <title>Price Estimate</title>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
   </head>
   <body>
     <!-- Yellow Pages Google Tag Manager (noscript) -->
@@ -77,6 +78,13 @@
       onload="if(submitted){window.location='submission.html';}"
     ></iframe>
 
+    <!-- Call back function for Google Recaptcha -->
+    <script>
+      function onSubmit(token) {
+        document.getElementById("demo-form").submit();
+      }
+    </script>
+
     <div class="contact-page">
       <div class="contact-message">
         <h1>How can we help?</h1>
@@ -92,227 +100,61 @@
       </div>
       <div class="contact-form">
         <form
-          action="https://docs.google.com/forms/d/e/1FAIpQLSesjY4qnAxFL9KpDTD-4WENKAVXbmN3lQdbjP7Gz7sgFPWZyg/formResponse"
+          action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfYHwShT9xNcxaOsGa7hljbLCc7q2HwN_CtfATFSho62a-3_g/formResponse"
           method="post"
           target="hiddenConfirm"
           onsubmit="submitted=true"
         >
           <div class="personal-information">
             <div id="client-name">
-              <div id="first-name">
+              <div id="Name">
                 <!--First_Name-->
-                <label for="entry.975620844">First_Name</label><br />
+                <label for="entry.1873403302">Name</label><br />
                 <input
                   required
                   type="text"
-                  name="entry.975620844"
-                  placeholder="First_Name"
-                /><br />
-              </div>
-              <div id="last-name">
-                <!--Last_Name-->
-                <label for="entry.584402678">Last_Name</label><br />
-                <input
-                  required
-                  type="text"
-                  name="entry.584402678"
-                  placeholder="Last_Name"
+                  name="entry.1873403302"
+                  placeholder="Your Name"
                 /><br />
               </div>
             </div>
             <div id="client-contact">
               <div id="email-address">
                 <!--Email-->
-                <label for="entry.895495998">Email</label><br />
+                <label for="entry.2002856293">Email</label><br />
                 <input
                   required
                   type="email"
-                  name="entry.895495998"
+                  name="entry.2002856293"
                   placeholder="Email"
                 /><br />
               </div>
               <div id="phone-number">
                 <!--Phone-->
-                <label for="entry.1990991459">Phone</label><br />
+                <label for="entry.442253324">Phone</label><br />
                 <input
                   type="text"
-                  name="entry.1990991459"
+                  name="entry.442253324"
                   placeholder="Phone_number"
                 /><br />
               </div>
             </div>
-            <div id="company-url">
-              <!--Company url-->
-              <label for="entry.698740086">Website address</label><br />
-              <input
-                type="text"
-                name="entry.698740086"
-                placeholder="website"
-              /><br />
-            </div>
           </div>
           <div class="project-info">
-            <div id="service-required">
-              <!--What service? radio button-->
-              <label for="entry.337940532">What Service do you desire?</label
-              ><br />
-              <div>
-                <input
-                  type="checkbox"
-                  name="entry.337940532"
-                  value="Website Development"
-                />
-                <label for="Website Development">Website Development</label>
-              </div>
-              <div>
-                <input
-                  type="checkbox"
-                  name="entry.337940532"
-                  value="3D Animation"
-                />
-                <label for="3D Animation">3D Animation</label>
-              </div>
-              <div>
-                <input
-                  type="checkbox"
-                  name="entry.337940532"
-                  value="2D Animation"
-                />
-                <label for="2D Animation">2D Animation</label><br />
-              </div>
-              <div>
-                <input
-                  type="checkbox"
-                  name="entry.337940532"
-                  value="Motion Graphics"
-                />
-                <label for="Motion Graphics">Motion Graphics</label><br />
-              </div>
-              <div>
-                <input
-                  type="checkbox"
-                  name="entry.337940532"
-                  value="Illustration"
-                />
-                <label for="Illustration">Illustration</label><br />
-              </div>
-              <div>
-                <label for="Other">Other</label><br />
-                <input
-                  type="text"
-                  name="entry.337940532.other_option_response"
-                  placeholder="Specify"
-                /><br />
-              </div>
-            </div>
-            <div id="timeline">
-              <!--How quickly?-->
-              <div>
-                <label for="entry.239293665"
-                  >How quickly do you need this?</label
-                ><br />
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  name="entry.239293665"
-                  value="Within the next 2 weeks"
-                />
-                <label for="entry.239293665">Within the next 2 weeks</label
-                ><br />
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  name="entry.239293665"
-                  value="Within the next month"
-                />
-                <label for="entry.239293665">Within the next month</label><br />
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  name="entry.239293665"
-                  value="Within the next 3 months"
-                />
-                <label for="entry.239293665">Within the next 3 months</label
-                ><br />
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  name="entry.239293665"
-                  value="More than 3 months time"
-                />
-                <label for="entry.239293665">More than 3 months time</label
-                ><br />
-              </div>
-            </div>
-
-            <div id="Budget">
-              <!--Budget-->
-              <label for="entry.367994938">Budget</label><br />
-
-              <input
-                type="radio"
-                name="entry.367994938"
-                value="Less than $4,000"
-              />
-              <label for="Less than $4000"> Less than $4000 </label><br />
-              <input
-                type="radio"
-                name="entry.367994938"
-                value="$4,000 - $9,999"
-              />
-              <label for="$4000 - $9,999"> $4000 - $9,999 </label><br />
-              <input
-                type="radio"
-                name="entry.367994938"
-                value="$10,000 - $20,000"
-              />
-              <label for="$10,000 - $20,000"> $10,000 - $20,000 </label><br />
-              <input
-                type="radio"
-                name="entry.367994938"
-                value="Greater than $20,000"
-              />
-              <label for="Less than $4000"> Greater than $20,000 </label><br />
-            </div>
-
-            <div id="channel">
-              <!--How did you hear about us-->
-              <label for="entry.835954693">How did you hear about us?</label
-              ><br />
-              <input type="radio" name="entry.835954693" value="By referral" />
-              <label for="entry.835954693">By referral</label><br />
-              <input
-                type="radio"
-                name="entry.835954693"
-                value="From social media"
-              />
-              <label for="entry.835954693">From social media</label><br />
-              <input type="radio" name="entry.835954693" value="From search" />
-              <label for="entry.835954693">From search</label><br />
-              <label for="Other">Other</label><br />
-              <input
-                type="text"
-                name="entry.835954693.other_option_response"
-                placeholder=""
-              /><br />
-            </div>
             <div id="message">
               <!--Your message-->
-              <label for="entry.291197692"
+              <label for="entry.105563153"
                 >Your space to ask questions. Tell us your goals for the
-                project, or anything else you need us to know.</label
+                project, or anything else you would like us to know.</label
               ><br />
 
               <textarea
-                name="entry.291197692"
+                name="entry.105563153"
                 rows="4"
                 cols="50"
                 wrap="hard"
                 placeholder="Your message."
+                required
               ></textarea
               ><br />
             </div>
