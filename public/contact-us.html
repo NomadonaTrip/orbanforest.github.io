@@ -86,81 +86,87 @@
     </script>
 
     <div class="contact-page">
-      <div class="contact-message">
-        <h1>How can we help?</h1>
+      <div class="container">
+        <div class="contact-message">
+          <h1>How can we help?</h1>
 
-        <p>
-          We love to hear about your business and how we can help you build
-          trust with your online customers.
-        </p>
-        <ul>
-          <li>Phone: 3659948961</li>
-          <li>Email: hello@orbanforest.ca</li>
-        </ul>
-      </div>
-      <div class="contact-form">
-        <form
-          action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfYHwShT9xNcxaOsGa7hljbLCc7q2HwN_CtfATFSho62a-3_g/formResponse"
-          method="post"
-          target="hiddenConfirm"
-          onsubmit="submitted=true"
-        >
-          <div class="personal-information">
-            <div id="client-name">
-              <div id="Name">
-                <!--First_Name-->
-                <label for="entry.1873403302">Name</label><br />
-                <input
-                  required
-                  type="text"
-                  name="entry.1873403302"
-                  placeholder="Your Name"
-                /><br />
+          <p>
+            We love to hear about your business and how we can help you build
+            trust with your online customers.
+          </p>
+          <ul>
+            <li>Phone: 3659948961</li>
+            <li>Email: hello@orbanforest.ca</li>
+          </ul>
+        </div>
+        <div class="contact-form">
+          <form
+            action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfYHwShT9xNcxaOsGa7hljbLCc7q2HwN_CtfATFSho62a-3_g/formResponse"
+            method="post"
+            target="hiddenConfirm"
+            onsubmit="submitted=true"
+          >
+            <div class="personal-information">
+              <div id="client-name">
+                <div id="Name">
+                  <!--First_Name-->
+                  <label for="entry.1873403302">Name</label><br />
+                  <input
+                    required
+                    type="text"
+                    name="entry.1873403302"
+                    placeholder="Your Name"
+                    id="entry.1873403302"
+                  /><br />
+                </div>
+              </div>
+              <div id="client-contact">
+                <div id="email-address">
+                  <!--Email-->
+                  <label for="entry.2002856293">Email</label><br />
+                  <input
+                    required
+                    type="email"
+                    name="entry.2002856293"
+                    placeholder="Email"
+                    id="entry.2002856293"
+                  /><br />
+                </div>
+                <div id="phone-number">
+                  <!--Phone-->
+                  <label for="entry.442253324">Phone</label><br />
+                  <input
+                    type="text"
+                    name="entry.442253324"
+                    placeholder="Phone_number"
+                    id="entry.442253324"
+                  /><br />
+                </div>
               </div>
             </div>
-            <div id="client-contact">
-              <div id="email-address">
-                <!--Email-->
-                <label for="entry.2002856293">Email</label><br />
-                <input
-                  required
-                  type="email"
-                  name="entry.2002856293"
-                  placeholder="Email"
-                /><br />
-              </div>
-              <div id="phone-number">
-                <!--Phone-->
-                <label for="entry.442253324">Phone</label><br />
-                <input
-                  type="text"
-                  name="entry.442253324"
-                  placeholder="Phone_number"
-                /><br />
-              </div>
-            </div>
-          </div>
-          <div class="project-info">
-            <div id="message">
-              <!--Your message-->
-              <label for="entry.105563153"
-                >Your space to ask questions. Tell us your goals for the
-                project, or anything else you would like us to know.</label
-              ><br />
+            <div class="project-info">
+              <div id="message">
+                <!--Your message-->
+                <label for="entry.105563153"
+                  >Your space to ask questions. Tell us your goals for the
+                  project, or anything else you would like us to know.</label
+                ><br />
 
-              <textarea
-                name="entry.105563153"
-                rows="4"
-                cols="50"
-                wrap="hard"
-                placeholder="Your message."
-                required
-              ></textarea
-              ><br />
+                <textarea
+                  name="entry.105563153"
+                  rows="4"
+                  cols="50"
+                  wrap="hard"
+                  id="entry.105563153"
+                  placeholder="Your message."
+                  required
+                ></textarea
+                ><br />
+              </div>
             </div>
-          </div>
-          <button type="submit">Submit</button>
-        </form>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
       </div>
     </div>
     <hr id="lower-line" />
