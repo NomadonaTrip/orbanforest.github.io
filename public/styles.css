@@ -973,6 +973,7 @@ footer {
 #submission-confirmation {
   display: flex;
   justify-content: center;
+  margin-bottom: 6rem;
 }
 #submission-confirmation .container {
   display: flex;
@@ -1835,6 +1836,8 @@ footer {
     width: 90%;
   }
   #submission-confirmation h1 {
+    font-size: 2rem;
+    text-align: center;
   }
   #submission-confirmation p {
   }
